@@ -49,23 +49,17 @@
     }
     .card {
       background-color: #ccc;
-      padding: 10px;
+      padding: 20px;
       border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .card img {
-      width: 80px;
-      height: 80px;
-    }
-    .planet-info {
-      font-size: 16px;
     }
     .planet-info h2 {
       margin: 0;
       font-size: 20px;
       text-decoration: underline;
+    }
+    .planet-info {
+      font-size: 16px;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -83,25 +77,24 @@
 
   <script>
     const planets = [
-      { name: "Mercury", orbit: 0.24, img: "https://i.imgur.com/0wT5YGZ.png" },
-      { name: "Venus", orbit: 0.62, img: "https://i.imgur.com/t12CcAX.png" },
-      { name: "Earth", orbit: 1.00, img: "https://i.imgur.com/CkC9UAI.png" },
-      { name: "Mars", orbit: 1.88, img: "https://i.imgur.com/EtGjcdg.png" },
-      { name: "Jupiter", orbit: 11.86, img: "https://i.imgur.com/vynZkYq.png" },
-      { name: "Saturn", orbit: 29.46, img: "https://i.imgur.com/kY3XYqN.png" },
-      { name: "Uranus", orbit: 84.01, img: "https://i.imgur.com/8tH3DhU.png" },
-      { name: "Neptune", orbit: 164.8, img: "https://i.imgur.com/ZsmnpMv.png" },
-      { name: "Pluto", orbit: 248.0, img: "https://i.imgur.com/6Zeo08u.png" }
+      { name: "Mercury", orbit: 0.24 },
+      { name: "Venus", orbit: 0.62 },
+      { name: "Earth", orbit: 1.00 },
+      { name: "Mars", orbit: 1.88 },
+      { name: "Jupiter", orbit: 11.86 },
+      { name: "Saturn", orbit: 29.46 },
+      { name: "Uranus", orbit: 84.01 },
+      { name: "Neptune", orbit: 164.8 },
+      { name: "Pluto", orbit: 248.0 }
     ];
 
     const container = document.getElementById("planetContainer");
 
-    // Initial HTML generation
+    // Generate the planet cards
     planets.forEach(planet => {
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
-        <img src="${planet.img}" alt="${planet.name}">
         <div class="planet-info">
           <h2>${planet.name}</h2>
           Age: <span class="age" id="${planet.name}-age">-</span><br>
