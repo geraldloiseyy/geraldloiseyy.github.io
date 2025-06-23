@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Earth Time Conversion</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff8f1;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      text-decoration: underline;
+    }
+    .input-area {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+    .input-area input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 260px;
+    }
+    .input-area button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .note {
+      text-align: center;
+      font-style: italic;
+      color: darkred;
+      font-weight: bold;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background-color: #ccc;
+      padding: 10px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card img {
+      width: 80px;
+      height: 80px;
+    }
+    .planet-info {
+      font-size: 16px;
+    }
+    .planet-info h2 {
+      margin: 0;
+      font-size: 20px;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Earth time conversion for other Planets</h1>
+  <div class="input-area">
+    <input id="earthYearsInput" type="number" placeholder="Enter Earth Years">
+    <button onclick="convertAges()">Enter</button>
+  </div>
+  <div class="note">
+    Enter an Earth year value to see how time passes on other planets.
+  </div>
+
+  <div class="container" id="planetContainer"></div>
+
+  <script>
+    const planets = [
+      { name: "Mercury", orbit: 0.24, img: "https://i.imgur.com/0wT5YGZ.png" },
+      { name: "Venus", orbit: 0.62, img: "https://i.imgur.com/t12CcAX.png" },
+      { name: "Earth", orbit: 1.00, img: "https://i.imgur.com/CkC9UAI.png" },
+      { name: "Mars", orbit: 1.88, img: "https://i.imgur.com/EtGjcdg.png" },
+      { name: "Jupiter", orbit: 11.86, img: "https://i.imgur.com/vynZkYq.png" },
+      { name: "Saturn", orbit: 29.46, img: "https://i.imgur.com/kY3XYqN.png" },
+      { name: "Uranus", orbit: 84.01, img: "https://i.imgur.com/8tH3DhU.png" },
+      { name: "Neptune", orbit: 164.8, img: "https://i.imgur.com/ZsmnpMv.png" },
+      { name: "Pluto", orbit: 248.0, img: "https://i.imgur.com/6Zeo08u.png" }
+    ];
+
+    const container = document.getElementById("planetContainer");
+
+    // Initial HTML generation
+    planets.forEach(planet => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${planet.img}" alt="${planet.name}">
+        <div class="planet-info">
+          <h2>${planet.name}</h2>
+          Age: <span class="age" id="${planet.name}-age">-</span><br>
+          Revolution: ${planet.orbit} Earth years<br>
+          Orbit Time: ~${Math.round(planet.orbit * 365)} days<br>
+          Distance: —
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    function convertAges() {
+      const earthYears = parseFloat(document.getElementById("earthYearsInput").value);
+      if (isNaN(earthYears) || earthYears < 0) {
+        alert("Please enter a valid number of Earth years.");
+        return;
+      }
+
+      planets.forEach(planet => {
+        const age = earthYears / planet.orbit;
+        document.getElementById(`${planet.name}-age`).textContent = age.toFixed(2);
+      });
+    }
+  </script>
+</body>
+</html>
