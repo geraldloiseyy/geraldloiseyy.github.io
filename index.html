@@ -51,23 +51,25 @@
       background-color: #ccc;
       padding: 20px;
       border-radius: 20px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
     .planet-image {
       width: 100px;
       height: auto;
-      margin-bottom: 10px;
       border-radius: 8px;
       box-shadow: 0 0 6px rgba(0,0,0,0.3);
-    }
-    .planet-info h2 {
-      margin: 0;
-      font-size: 20px;
-      text-decoration: underline;
+      flex-shrink: 0;
     }
     .planet-info {
       font-size: 16px;
-      margin-top: 10px;
+      text-align: left;
+    }
+    .planet-info h2 {
+      margin: 0 0 5px;
+      font-size: 20px;
+      text-decoration: underline;
     }
   </style>
 </head>
