@@ -45,6 +45,9 @@
       background-color: #ccc;
       padding: 20px;
       border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
     .planet-info h2 {
       margin: 0;
@@ -54,6 +57,10 @@
     .planet-info {
       font-size: 16px;
       margin-top: 10px;
+    }
+    img {
+      max-width: 100px;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -68,15 +75,15 @@
 
   <script>
     const planets = [
-      { name: "Mercury", orbit: 0.24 },
-      { name: "Venus", orbit: 0.62 },
-      { name: "Earth", orbit: 1.00 },
-      { name: "Mars", orbit: 1.88 },
-      { name: "Jupiter", orbit: 11.86 },
-      { name: "Saturn", orbit: 29.46 },
-      { name: "Uranus", orbit: 84.01 },
-      { name: "Neptune", orbit: 164.8 },
-      { name: "Pluto", orbit: 248.0 }
+      { name: "Mercury", orbit: 0.24, image: "images/mercury.jpg" },
+      { name: "Venus", orbit: 0.62, image: "images/venus.jpg" },
+      { name: "Earth", orbit: 1.00, image: "images/earth.jpg" },
+      { name: "Mars", orbit: 1.88, image: "images/mars.jpg" },
+      { name: "Jupiter", orbit: 11.86, image: "images/jupiter.jpg" },
+      { name: "Saturn", orbit: 29.46, image: "images/saturn.jpg" },
+      { name: "Uranus", orbit: 84.01, image: "images/uranus.jpg" },
+      { name: "Neptune", orbit: 164.8, image: "images/neptune.jpg" },
+      { name: "Pluto", orbit: 248.0, image: "images/pluto.jpg" }
     ];
 
     const container = document.getElementById("planetContainer");
@@ -86,6 +93,7 @@
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
+        <img src="${planet.image}" alt="${planet.name}">
         <div class="planet-info">
           <h2>${planet.name}</h2>
           Age: <span class="age" id="${planet.name}-age">-</span><br>
